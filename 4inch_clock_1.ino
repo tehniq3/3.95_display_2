@@ -162,7 +162,8 @@ if (nivel == 0)
 {
 if (digitalRead(meniu) == LOW)
   {
-  nivel = nivel+1;
+  //nivel = nivel+1;
+  nivel =99;
   hh1=hh;
   mm1=mm;
   zz1=zz;
@@ -305,6 +306,12 @@ delay(500);
      tft.fillCircle(240,145,9,BLACK);
 } // end usual case (clock)
 
+if (nivel == 99)   // clear display
+{
+  tft.fillScreen(BLACK);
+//  tft.fillRect(0,0,128,160,BLACK);
+nivel = 1;
+  }    
 
 if (nivel == 1)   // change hours
 {
@@ -339,6 +346,7 @@ if (hh1 > 23) hh1 = 0;
 if (hh1 < 0) hh1 = 23;       
      
 }  // end loop nivel = 1 (change the hours)
+
 
 if (nivel == 2)   // change minutes
 {
