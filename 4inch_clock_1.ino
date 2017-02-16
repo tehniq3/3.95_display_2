@@ -123,14 +123,14 @@ digitalWrite(minus, HIGH);
 digitalWrite(alarm, HIGH);
 digitalWrite(buzzer, LOW);
     printText("Temperatura", GREEN,25,195,2);  // Temperature Static Text
-   printText("Alarma setata", MAGENTA,235,195,2);
-    printText("Ceas cu alarma si termometru V1.2@2017", DARKGREEN,235,295,1);
-    printText("cu Arduino Due, DS3231 si 3,95", DARKGREEN,235,305,1);
+    printText("Alarma setata", MAGENTA,235,195,2);
+    printText("Ceas cu alarma si termometru V1.b @2017", DARKGREEN,225,295,1);
+    printText("cu Arduino Due, DS3231 si afisaj de 10cm.", DARKGREEN,215,305,1);
     printText("MAX", RED,28,260,2);
     printText("MIN", BLUE,125,260,2);
 
 // setDS3231time(byte second, byte minute, byte hour, byte dayOfWeek, byte dayOfMonth, byte month, byte year);
-//setDS3231time(0, 45, 13, 0, 25, 11, 2016;
+//setDS3231time(0, 51, 19, 2, 14, 02, 2017);
 
 //  hha = 7;
 //  mma = 00;
@@ -204,28 +204,59 @@ if (digitalRead(alarm) == LOW)
 if (mma == mm & hha == hh & al%2)
 {
 digitalWrite(buzzer, HIGH);
-   tft.drawCircle(xa, ya, 5, RED); 
-   tft.drawLine(xa, ya, xa, ya-5, RED);
-   tft.drawLine(xa, ya, xa+4, ya+4, RED); tft.setFont(&FreeSans12pt7b);
-   printText(timeChar, RED,xa+7,ya,2);tft.setFont();
+//   tft.drawCircle(xa, ya, 15, RED); 
+//   tft.drawLine(xa, ya, xa, ya-15, RED);
+//   tft.drawLine(xa, ya, xa+11, ya+11, RED);
+      tft.drawLine(xa, ya-15, xa+5, ya-10, RED);
+      tft.drawLine(xa, ya-15, xa-5, ya-10, RED);
+      tft.drawLine(xa+5, ya-10, xa+10, ya+10, RED);
+      tft.drawLine(xa-5, ya-10, xa-10, ya+10, RED);
+      tft.drawLine(xa+10, ya+10, xa+15, ya+15, RED);
+      tft.drawLine(xa-10, ya+10, xa-15, ya+15, RED);
+      tft.drawLine(xa+15, ya+15, xa, ya+10, RED);
+      tft.drawLine(xa-15, ya+15, xa, ya+10, RED);
+      tft.drawLine(xa+15, ya+15, xa, ya+20, RED);
+      tft.drawLine(xa-15, ya+15, xa, ya+20, RED);
+tft.setFont(&FreeSans12pt7b);
+   printText(timeChar, RED,xa+17,ya+10,2);tft.setFont();
 }
 else
 {
 if (al%2 == 0)
 {
-    tft.drawCircle(xa, ya, 5, BLUE); 
-    tft.drawLine(xa, ya, xa, ya-5, BLUE);
-    tft.drawLine(xa, ya, xa+4, ya+4, BLUE); 
-  digitalWrite(buzzer, LOW);tft.setFont(&FreeSans12pt7b);
-    printText(timeChar, BLUE,xa+7,ya,2);tft.setFont();
+//    tft.drawCircle(xa, ya, 15, BLUE); 
+//    tft.drawLine(xa, ya, xa, ya-15, BLUE);
+//    tft.drawLine(xa, ya, xa+11, ya+11, BLUE); 
+      tft.drawLine(xa, ya-15, xa+5, ya-10, BLUE);
+      tft.drawLine(xa, ya-15, xa-5, ya-10, BLUE);
+      tft.drawLine(xa+5, ya-10, xa+10, ya+10, BLUE);
+      tft.drawLine(xa-5, ya-10, xa-10, ya+10, BLUE);
+      tft.drawLine(xa+10, ya+10, xa+15, ya+15, BLUE);
+      tft.drawLine(xa-10, ya+10, xa-15, ya+15, BLUE);
+      tft.drawLine(xa+15, ya+15, xa, ya+10, BLUE);
+      tft.drawLine(xa-15, ya+15, xa, ya+10, BLUE);
+      tft.drawLine(xa+15, ya+15, xa, ya+20, BLUE);
+      tft.drawLine(xa-15, ya+15, xa, ya+20, BLUE);
+    digitalWrite(buzzer, LOW);tft.setFont(&FreeSans12pt7b);
+    printText(timeChar, BLUE,xa+17,ya+10,2);tft.setFont();
 }
 if (al%2 == 1)
 {
-    tft.drawCircle(xa, ya, 5, WHITE); 
-    tft.drawLine(xa, ya, xa, ya-5, WHITE);
-    tft.drawLine(xa, ya, xa+4, ya+4, WHITE); 
-  digitalWrite(buzzer, LOW);tft.setFont(&FreeSans12pt7b);
-    printText(timeChar, WHITE,xa+7,ya,2);tft.setFont();
+ //   tft.drawCircle(xa, ya, 15, WHITE); 
+ //   tft.drawLine(xa, ya, xa, ya-15, WHITE);
+ //   tft.drawLine(xa, ya, xa+11, ya+11, WHITE); 
+      tft.drawLine(xa, ya-15, xa+5, ya-10, WHITE);
+      tft.drawLine(xa, ya-15, xa-5, ya-10, WHITE);
+      tft.drawLine(xa+5, ya-10, xa+10, ya+10, WHITE);
+      tft.drawLine(xa-5, ya-10, xa-10, ya+10, WHITE);
+      tft.drawLine(xa+10, ya+10, xa+15, ya+15, WHITE);
+      tft.drawLine(xa-10, ya+10, xa-15, ya+15, WHITE);
+      tft.drawLine(xa+15, ya+15, xa, ya+10, WHITE);
+      tft.drawLine(xa-15, ya+15, xa, ya+10, WHITE);
+      tft.drawLine(xa+15, ya+15, xa, ya+20, WHITE);
+      tft.drawLine(xa-15, ya+15, xa, ya+20, WHITE);
+    digitalWrite(buzzer, LOW);tft.setFont(&FreeSans12pt7b);
+    printText(timeChar, WHITE,xa+17,ya+10,2);tft.setFont();
 }
 }
  
@@ -639,8 +670,8 @@ writeEEPROM(disk1, 102, al%2);
   initial = 1;
      printText("Temperatura", GREEN,25,195,2);  // Temperature Static Text
     printText("Alarma setata", MAGENTA,235,195,2);
-     printText("Ceas cu alarma si termometru V1.2@2017", DARKGREEN,235,295,1);
-    printText("cu Arduino Due, DS3231 si 3,95", DARKGREEN,235,305,1);
+     printText("Ceas cu alarma si termometru V1.b @2017", DARKGREEN,225,295,1);
+    printText("cu Arduino Due, DS3231 si afisaj de 10cm.", DARKGREEN,215,305,1);
     printText("MAX", RED,28,260,2);
     printText("MIN", BLUE,125,260,2);
  }
